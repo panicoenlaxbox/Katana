@@ -1,10 +1,12 @@
-﻿using Microsoft.Owin;
+﻿using KatanaConsoleDemo;
+using Microsoft.Owin;
 using Microsoft.Owin.Diagnostics;
 using Owin;
 
+[assembly: OwinStartup(typeof(MyStartup))]
 namespace KatanaConsoleDemo
 {
-    public class Startup
+    public class MyStartup
     {
         public void Configuration(IAppBuilder app)
         {
