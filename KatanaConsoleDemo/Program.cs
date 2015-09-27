@@ -7,7 +7,7 @@ namespace KatanaConsoleDemo
     {
         static void Main(string[] args)
         {
-            using (WebApp.Start<Startup>("http://localhost:8888"))
+            using (WebApp.Start("http://localhost:8888"))
             {
                 Console.WriteLine("Press a key to stop server");
                 Console.ReadKey();
