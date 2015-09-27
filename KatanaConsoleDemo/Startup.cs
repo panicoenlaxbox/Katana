@@ -1,5 +1,8 @@
-﻿using Owin;
+﻿using KatanaConsoleDemo;
+using Microsoft.Owin;
+using Owin;
 
+[assembly: OwinStartup("Staging", typeof(MyStartup))]
 namespace KatanaConsoleDemo
 {
     public class MyStartup
