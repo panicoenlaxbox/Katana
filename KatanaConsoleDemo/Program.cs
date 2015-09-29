@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin;
 using Microsoft.Owin.Hosting;
 using Owin;
+using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
 namespace KatanaConsoleDemo
 {
@@ -30,6 +31,12 @@ namespace KatanaConsoleDemo
             using (WebApp.Start("http://localhost:8888",
                 app =>
                 {
+                    app.Use(new Func<AppFunc, AppFunc>(next => (async env =>
+                    {
+                        Console.WriteLine("Begin Request");
+                        await next.Invoke(env);
+                        Console.WriteLine("End Request");
+                    })));
                     app.Use<PoweredByMiddleware>("tabconsultores");
                     app.Use(async (context, next) =>
                     {
