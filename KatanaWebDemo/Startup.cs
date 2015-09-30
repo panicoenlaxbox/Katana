@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Microsoft.Owin.Extensions;
+using Owin;
 
 namespace KatanaWebDemo
 {
@@ -7,6 +8,7 @@ namespace KatanaWebDemo
         public void Configuration(IAppBuilder app)
         {
             app.UseWelcomePage("/welcome");
+            app.UseStageMarker(PipelineStage.AcquireState)
         }
     }
 }
